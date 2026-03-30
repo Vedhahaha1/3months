@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 Months ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #f2a7b8;
+    --blush: #fce8ed;
+    --deep-rose: #c96b84;
+    --petal: #fdf0f3;
+    --cream: #fffaf8;
+    --text-dark: #3a2028;
+    --gold: #c9a96e;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(160deg, #fff5f7 0%, #fce8ed 50%, #fff0e6 100%);
+    overflow: hidden;
+  }
+
+  /* Soft grain overlay */
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* Floating petals background */
+  .petal-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .petal-bg span {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.15;
+    animation: floatPetal linear infinite;
+  }
+
+  @keyframes floatPetal {
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.2; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* Bouquet SVG */
+  .bouquet-wrap {
+    position: relative;
+    z-index: 2;
+    animation: floatBouquet 4s ease-in-out infinite;
+  }
+
+  @keyframes floatBouquet {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+
+  .bouquet-svg { width: min(340px, 80vw); filter: drop-shadow(0 20px 40px rgba(201,107,132,0.25)); }
+
+  .hero-text {
+    z-index: 2;
+    text-align: center;
+    margin-top: 28px;
+    animation: fadeUp 1.4s ease both;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    color: var(--deep-rose);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.1;
+  }
+
+  .hero-title em {
+    color: var(--deep-rose);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    margin-top: 12px;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.12em;
+    color: #a07080;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--deep-rose);
+    opacity: 0.6;
+    animation: fadeUp 2s ease both 1.2s;
+    z-index: 3;
+  }
+
+  .scroll-hint span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--deep-rose), transparent);
+    animation: scrollLine 1.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.5; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* ── COLLAGE ── */
+  #collage {
+    min-height: 100vh;
+    background: var(--blush);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #collage::before {
+    content: '✦';
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    color: var(--deep-rose);
+    opacity: 0.4;
+    letter-spacing: 1em;
+    white-space: nowrap;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--deep-rose);
+    opacity: 0.75;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .collage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    max-width: 720px;
+    width: 100%;
+  }
+
+  .collage-cell {
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    background: #e8c5d0;
+    box-shadow: 0 8px 32px rgba(180,80,110,0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: default;
+  }
+
+  .collage-cell:hover {
+    transform: scale(1.025) rotate(-0.5deg);
+    box-shadow: 0 16px 48px rgba(180,80,110,0.22);
+    z-index: 2;
+  }
+
+  .collage-cell:nth-child(2) { transform-origin: top right; }
+  .collage-cell:nth-child(3) { transform-origin: bottom left; }
+  .collage-cell:nth-child(4) { transform-origin: bottom right; }
+
+  .collage-cell:nth-child(1) { aspect-ratio: 4/5; }
+  .collage-cell:nth-child(2) { aspect-ratio: 4/5; margin-top: 32px; }
+  .collage-cell:nth-child(3) { aspect-ratio: 5/4; }
+  .collage-cell:nth-child(4) { aspect-ratio: 5/4; margin-top: -32px; }
+
+  /* Photo placeholders with gradient & message */
+  .collage-cell .placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(60,20,30,0.5);
+    text-align: center;
+    padding: 20px;
+    line-height: 1.5;
+  }
+
+  .collage-cell:nth-child(1) .placeholder { background: linear-gradient(135deg,#f7c5d5,#f0aabf); }
+  .collage-cell:nth-child(2) .placeholder { background: linear-gradient(135deg,#fcd5d5,#f7c0cb); }
+  .collage-cell:nth-child(3) .placeholder { background: linear-gradient(135deg,#f5b8ca,#efa8bd); }
+  .collage-cell:nth-child(4) .placeholder { background: linear-gradient(135deg,#fbcdd8,#f4b3c2); }
+
+  .collage-cell .placeholder svg { width: 36px; opacity: 0.4; margin-bottom: 12px; }
+
+  /* Upload hint */
+  .upload-hint {
+    margin-top: 32px;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: var(--deep-rose);
+    opacity: 0.65;
+    text-align: center;
+  }
+
+  /* ── MOVIE NIGHT ── */
+  #movie {
+    min-height: 100vh;
+    background: #1a0a10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Stars */
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.4); }
+  }
+
+  /* Rose gold shimmer line */
+  #movie::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--rose), var(--gold), transparent);
+  }
+
+  .movie-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 860px;
+    width: 100%;
+  }
+
+  .movie-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.9;
+  }
+
+  .movie-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 7vw, 4.5rem);
+    font-weight: 300;
+    color: #fff0f4;
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .movie-heading em { color: var(--rose); font-style: italic; }
+
+  .movie-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(242,167,184,0.12);
+    border: 1px solid rgba(242,167,184,0.3);
+    border-radius: 100px;
+    padding: 8px 24px;
+    margin: 20px 0 48px;
+    color: var(--rose);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .movie-time-badge svg { width: 16px; opacity: 0.8; }
+
+  /* Poster card */
+  .poster-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(201,169,110,0.2),
+                0 32px 80px rgba(0,0,0,0.6),
+                0 0 60px rgba(242,167,184,0.1);
+    max-width: 380px;
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: #2d1020;
+    transition: transform 0.5s ease;
+  }
+
+  .poster-card:hover { transform: scale(1.015) rotate(0.5deg); }
+
+  /* Illustrated Hridayam poster */
+  .poster-art {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Glow under poster */
+  .poster-glow {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60px;
+    background: radial-gradient(ellipse, rgba(201,107,132,0.35), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .movie-details {
+    margin-top: 40px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+
+  .movie-name-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    color: #fff5f7;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .movie-tagline {
+    color: rgba(255,220,230,0.5);
+    font-size: 0.88rem;
+    letter-spacing: 0.12em;
+    font-style: italic;
+  }
+
+  .movie-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 6px 18px;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,220,230,0.7);
+    text-transform: uppercase;
+  }
+
+  /* Footer ribbon */
+  #footer {
+    background: var(--blush);
+    padding: 60px 24px;
+    text-align: center;
+  }
+
+  .footer-heart {
+    font-size: 2rem;
+    color: var(--deep-rose);
+    display: block;
+    margin-bottom: 16px;
+    animation: heartbeat 1.4s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.18); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.12); }
+  }
+
+  .footer-msg {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--text-dark);
+    opacity: 0.7;
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="petal-bg" id="petals"></div>
+
+  <div class="bouquet-wrap">
+    <!-- Hand-crafted pink lily bouquet SVG -->
+    <svg class="bouquet-svg" viewBox="0 0 340 420" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <defs>
+        <radialGradient id="pg1" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#fce4ec"/>
+          <stop offset="100%" stop-color="#f48fb1"/>
+        </radialGradient>
+        <radialGradient id="pg2" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffd6e4"/>
+          <stop offset="100%" stop-color="#e91e8c" stop-opacity="0.7"/>
+        </radialGradient>
+        <radialGradient id="pg3" cx="50%" cy="40%" r="55%">
+          <stop offset="0%" stop-color="#ffe0ec"/>
+          <stop offset="100%" stop-color="#f06292"/>
+        </radialGradient>
+        <radialGradient id="lg1" cx="50%" cy="0%" r="100%">
+          <stop offset="0%" stop-color="#a5d6a7"/>
+          <stop offset="100%" stop-color="#388e3c"/>
+        </radialGradient>
+        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+          <feOffset dx="0" dy="4"/>
+          <feComposite in2="SourceGraphic"/>
+        </filter>
+      </defs>
+
+      <!-- Ribbon bow -->
+      <path d="M148 370 Q130 350 120 360 Q110 375 135 380 Q148 382 155 370Z" fill="#f9a8c9" opacity="0.85"/>
+      <path d="M192 370 Q210 350 220 360 Q230 375 205 380 Q192 382 185 370Z" fill="#f9a8c9" opacity="0.85"/>
+      <ellipse cx="170" cy="373" rx="16" ry="10" fill="#f48fb1"/>
+      <path d="M155 373 Q170 390 185 373" stroke="#e91e8c" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+      <!-- Stems -->
+      <path d="M138 370 Q130 330 118 260 Q108 200 120 160" stroke="#66bb6a" stroke-width="5" stroke-linecap="round"/>
+      <path d="M155 370 Q150 310 148 240 Q146 180 155 130" stroke="#4caf50" stroke-width="5" stroke-linecap="round"/>
+      <path d="M170 370 Q170 300 170 230 Q170 170 165 110" stroke="#66bb6a" stroke-width="5" stroke-linecap="round"/>
+      <path d="M185 370 Q188 310 192 240 Q196 178 195 125" stroke="#4caf50" stroke-width="5" stroke-linecap="round"/>
+      <path d="M200 370 Q210 330 222 265 Q232 205 218 155" stroke="#66bb6a" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Leaves -->
+      <path d="M118 260 Q90 240 85 210 Q100 220 118 260Z" fill="url(#lg1)" opacity="0.9"/>
+      <path d="M148 230 Q175 205 190 185 Q175 215 148 230Z" fill="url(#lg1)" opacity="0.85"/>
+      <path d="M222 265 Q248 245 254 215 Q238 228 222 265Z" fill="url(#lg1)" opacity="0.9"/>
+      <path d="M192 235 Q165 212 158 190 Q175 218 192 235Z" fill="url(#lg1)" opacity="0.8"/>
+
+      <!-- ── LILY 1 (back left) ── -->
+      <g transform="translate(115,155) rotate(-18)">
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg2)" opacity="0.75" transform="rotate(300)"/>
+        <!-- Stamens -->
+        <line x1="0" y1="-8" x2="-4" y2="-20" stroke="#e91e8c" stroke-width="1.2" opacity="0.7"/>
+        <line x1="0" y1="-8" x2="4" y2="-20" stroke="#e91e8c" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="-4" cy="-20" r="2.5" fill="#ffd54f"/>
+        <circle cx="4" cy="-20" r="2.5" fill="#ffd54f"/>
+        <circle cx="0" cy="-10" r="4" fill="#ffca28" opacity="0.9"/>
+      </g>
+
+      <!-- ── LILY 2 (back right) ── -->
+      <g transform="translate(222,150) rotate(16)">
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="42" fill="url(#pg3)" opacity="0.78" transform="rotate(300)"/>
+        <line x1="0" y1="-8" x2="-4" y2="-20" stroke="#c2185b" stroke-width="1.2" opacity="0.7"/>
+        <line x1="0" y1="-8" x2="4" y2="-20" stroke="#c2185b" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="-4" cy="-20" r="2.5" fill="#ffd54f"/>
+        <circle cx="4" cy="-20" r="2.5" fill="#ffd54f"/>
+        <circle cx="0" cy="-10" r="4" fill="#ffca28" opacity="0.9"/>
+      </g>
+
+      <!-- ── LILY 3 (center, front, largest) ── -->
+      <g transform="translate(165,100)">
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)"/>
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-46" rx="16" ry="52" fill="url(#pg1)" transform="rotate(300)"/>
+        <!-- Center dots -->
+        <line x1="0" y1="-10" x2="-6" y2="-28" stroke="#ad1457" stroke-width="1.5" opacity="0.8"/>
+        <line x1="0" y1="-10" x2="6" y2="-28" stroke="#ad1457" stroke-width="1.5" opacity="0.8"/>
+        <line x1="0" y1="-10" x2="0" y2="-30" stroke="#ad1457" stroke-width="1.5" opacity="0.8"/>
+        <circle cx="-6" cy="-28" r="3" fill="#ffd740"/>
+        <circle cx="6" cy="-28" r="3" fill="#ffd740"/>
+        <circle cx="0" cy="-30" r="3" fill="#ffd740"/>
+        <circle cx="0" cy="-12" r="5" fill="#ff8f00" opacity="0.9"/>
+        <!-- Freckles on petals -->
+        <circle cx="0" cy="-52" r="1.5" fill="#e91e8c" opacity="0.35"/>
+        <circle cx="4" cy="-46" r="1.2" fill="#e91e8c" opacity="0.3"/>
+        <circle cx="-4" cy="-48" r="1.2" fill="#e91e8c" opacity="0.3"/>
+      </g>
+
+      <!-- ── LILY 4 (mid left) ── -->
+      <g transform="translate(148,125) rotate(-8)">
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-38" rx="13" ry="44" fill="#fce4ec" opacity="0.85" transform="rotate(300)"/>
+        <circle cx="0" cy="-10" r="4" fill="#ffca28" opacity="0.9"/>
+      </g>
+
+      <!-- ── LILY 5 (mid right) ── -->
+      <g transform="translate(192,120) rotate(10)">
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85"/>
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-36" rx="12" ry="40" fill="#f8bbd0" opacity="0.85" transform="rotate(300)"/>
+        <circle cx="0" cy="-10" r="4" fill="#ffd54f" opacity="0.9"/>
+      </g>
+
+      <!-- Baby's breath scattered dots -->
+      <g opacity="0.55">
+        <circle cx="90" cy="195" r="4" fill="white"/>
+        <circle cx="97" cy="188" r="3" fill="white"/>
+        <circle cx="85" cy="185" r="3.5" fill="white"/>
+        <circle cx="250" cy="200" r="4" fill="white"/>
+        <circle cx="257" cy="192" r="3" fill="white"/>
+        <circle cx="244" cy="190" r="3.5" fill="white"/>
+        <circle cx="135" cy="168" r="3.5" fill="white"/>
+        <circle cx="205" cy="165" r="3.5" fill="white"/>
+        <circle cx="170" cy="178" r="3" fill="white"/>
+        <circle cx="125" cy="180" r="3" fill="white"/>
+        <circle cx="215" cy="178" r="3" fill="white"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-text">
+    <p class="hero-tag">3 months of us</p>
+    <h1 class="hero-title">Happy<br><em>Anniversary</em></h1>
+    <p class="hero-sub">with all my heart &nbsp;♡</p>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ════════ COLLAGE ════════ -->
+<section id="collage">
+  <p class="section-label reveal">our little moments</p>
+  <h2 class="section-title reveal reveal-delay-1">us, always</h2>
+
+  <div class="collage-grid reveal reveal-delay-2">
+
+    <div class="collage-cell">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        add your favourite photo here
+      </div>
+    </div>
+
+    <div class="collage-cell">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        a memory just for us
+      </div>
+    </div>
+
+    <div class="collage-cell">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        your smile, my favourite
+      </div>
+    </div>
+
+    <div class="collage-cell">
+      <div class="placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="m21 15-5-5L5 21"/>
+        </svg>
+        forever in my heart
+      </div>
+    </div>
+
+  </div>
+
+  <p class="upload-hint reveal reveal-delay-3">✦ replace the boxes with your photos ✦</p>
+</section>
+
+<!-- ════════ MOVIE NIGHT ════════ -->
+<section id="movie">
+  <div class="stars" id="stars"></div>
+
+  <div class="movie-inner">
+    <p class="movie-eyebrow reveal">tonight's plan</p>
+    <h2 class="movie-heading reveal reveal-delay-1">Movie <em>Date Night</em></h2>
+
+    <div class="movie-time-badge reveal reveal-delay-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+      Tonight at 8:00 PM
+    </div>
+
+    <div style="position:relative;">
+      <div class="poster-card reveal reveal-delay-2">
+        <!-- Illustrated Hridayam poster -->
+        <svg class="poster-art" viewBox="0 0 380 570" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d0720"/>
+              <stop offset="40%" stop-color="#1a0a35"/>
+              <stop offset="100%" stop-color="#2d1040"/>
+            </linearGradient>
+            <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff9e6"/>
+              <stop offset="100%" stop-color="#ffd54f"/>
+            </radialGradient>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd54f" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a0a35"/>
+              <stop offset="100%" stop-color="#0a0518"/>
+            </linearGradient>
+            <filter id="glow-f">
+              <feGaussianBlur stdDeviation="8" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Background sky -->
+          <rect width="380" height="570" fill="url(#sky)"/>
+
+          <!-- Moon glow -->
+          <circle cx="190" cy="130" r="70" fill="url(#glow)"/>
+
+          <!-- Moon -->
+          <circle cx="190" cy="130" r="40" fill="url(#moon)" opacity="0.95"/>
+
+          <!-- Stars -->
+          <g fill="white" opacity="0.7">
+            <circle cx="40" cy="50" r="1.2"/><circle cx="80" cy="30" r="0.8"/>
+            <circle cx="130" cy="45" r="1.5"/><circle cx="160" cy="20" r="0.7"/>
+            <circle cx="230" cy="35" r="1.1"/><circle cx="280" cy="55" r="1.4"/>
+            <circle cx="320" cy="25" r="0.9"/><circle cx="355" cy="70" r="1.2"/>
+            <circle cx="50" cy="90" r="0.8"/><circle cx="100" cy="80" r="1"/>
+            <circle cx="310" cy="90" r="0.8"/><circle cx="340" cy="110" r="1.1"/>
+            <circle cx="60" cy="140" r="0.7"/><circle cx="20" cy="170" r="1.2"/>
+            <circle cx="360" cy="155" r="0.9"/>
+          </g>
+
+          <!-- Ground / silhouette base -->
+          <rect x="0" y="380" width="380" height="190" fill="url(#ground)"/>
+
+          <!-- Rolling hills silhouette -->
+          <path d="M0 380 Q60 340 130 370 Q180 390 240 355 Q300 320 380 360 L380 570 L0 570Z" fill="#0d0520"/>
+
+          <!-- Two figures sitting together -->
+          <!-- bench -->
+          <rect x="140" y="340" width="100" height="6" rx="3" fill="#3d2060"/>
+          <rect x="145" y="346" width="6" height="20" fill="#3d2060"/>
+          <rect x="229" y="346" width="6" height="20" fill="#3d2060"/>
+
+          <!-- Figure 1 (left) body -->
+          <ellipse cx="168" cy="325" rx="14" ry="18" fill="#2a1050"/>
+          <circle cx="168" cy="305" r="11" fill="#c8956c"/>
+          <!-- Hair fig 1 -->
+          <ellipse cx="168" cy="300" rx="11" ry="7" fill="#1a0a30"/>
+
+          <!-- Figure 2 (right, head on shoulder) body -->
+          <ellipse cx="210" cy="322" rx="14" ry="18" fill="#1a0a35"/>
+          <circle cx="204" cy="303" r="10" fill="#d4a574"/>
+          <!-- Hair fig 2 (longer) -->
+          <path d="M194 298 Q196 315 200 320 Q204 325 208 318 Q214 308 214 298 Q210 293 204 295Z" fill="#0d0520"/>
+
+          <!-- Heart between them -->
+          <path d="M188 308 Q188 303 192 303 Q195 303 188 310 Q181 303 184 303 Q188 303 188 308Z" fill="#f48fb1" opacity="0.8"/>
+
+          <!-- Cassette tape (nod to the film) -->
+          <rect x="20" y="480" width="70" height="50" rx="4" fill="#2d1550" opacity="0.8"/>
+          <rect x="26" y="487" width="58" height="22" rx="2" fill="#1a0a30"/>
+          <circle cx="37" cy="498" r="6" fill="#3d2060" stroke="#7b52a8" stroke-width="1.5"/>
+          <circle cx="63" cy="498" r="6" fill="#3d2060" stroke="#7b52a8" stroke-width="1.5"/>
+          <rect x="32" y="515" width="36" height="8" rx="1" fill="#3d2060"/>
+
+          <!-- Vinyl record hint -->
+          <circle cx="340" cy="500" r="30" fill="#1a0a30" stroke="#3d2060" stroke-width="2"/>
+          <circle cx="340" cy="500" r="8" fill="#2d1550"/>
+          <circle cx="340" cy="500" r="3" fill="#7b52a8"/>
+
+          <!-- Rose petals scattered -->
+          <ellipse cx="100" cy="460" rx="8" ry="5" fill="#c2185b" opacity="0.5" transform="rotate(-20,100,460)"/>
+          <ellipse cx="115" cy="470" rx="7" ry="4" fill="#e91e8c" opacity="0.4" transform="rotate(15,115,470)"/>
+          <ellipse cx="270" cy="455" rx="8" ry="5" fill="#c2185b" opacity="0.5" transform="rotate(30,270,455)"/>
+          <ellipse cx="255" cy="468" rx="7" ry="4" fill="#f48fb1" opacity="0.4" transform="rotate(-10,255,468)"/>
+
+          <!-- Title area -->
+          <rect x="0" y="390" width="380" height="80" fill="rgba(10,5,24,0.7)"/>
+
+          <!-- HRIDAYAM title text -->
+          <text x="190" y="425" font-family="Georgia, serif" font-size="36" font-weight="bold"
+                fill="#fce4ec" text-anchor="middle" letter-spacing="4">HRIDAYAM</text>
+          <text x="190" y="448" font-family="Georgia, serif" font-size="13" fill="#f48fb1"
+                text-anchor="middle" letter-spacing="6" font-style="italic">Heart</text>
+
+          <!-- Tagline -->
+          <text x="190" y="470" font-family="Georgia, serif" font-size="10" fill="rgba(255,200,220,0.6)"
+                text-anchor="middle" letter-spacing="2">a film by Vineeth Sreenivasan</text>
+
+          <!-- Top border -->
+          <rect x="0" y="0" width="380" height="4" fill="linear-gradient(90deg, #c9a96e, #f48fb1)"/>
+          <line x1="0" y1="4" x2="380" y2="4" stroke="#c9a96e" stroke-width="1.5" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="poster-glow"></div>
+    </div>
+
+    <div class="movie-details reveal reveal-delay-3">
+      <h3 class="movie-name-big">Hridayam</h3>
+      <p class="movie-tagline">a love story that lives in the heart</p>
+      <div class="movie-meta">
+        <span class="meta-pill">Malayalam</span>
+        <span class="meta-pill">Romance · Drama</span>
+        <span class="meta-pill">2022</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer id="footer">
+  <span class="footer-heart">♡</span>
+  <p class="footer-msg">here's to every moment with you</p>
+</footer>
+
+<script>
+  // ── Floating petals ──
+  const petalContainer = document.getElementById('petals');
+  const colors = ['#f9a8c9','#fbc8d8','#f48fb1','#fce4ec','#f06292'];
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement('span');
+    const size = 8 + Math.random() * 18;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${8+Math.random()*14}s;
+      animation-delay:${Math.random()*12}s;
+      transform:rotate(${Math.random()*360}deg);
+    `;
+    petalContainer.appendChild(s);
+  }
+
+  // ── Stars in movie section ──
+  const starContainer = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.classList.add('star');
+    const size = 0.8 + Math.random() * 2.2;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      animation-duration:${2+Math.random()*4}s;
+      animation-delay:${Math.random()*5}s;
+    `;
+    starContainer.appendChild(s);
+  }
+
+  // ── Scroll reveal ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
